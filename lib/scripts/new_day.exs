@@ -18,7 +18,7 @@ defmodule Mix.Tasks.NewDay do
     use Mix.Task
   
     def run(_) do
-      {:ok, raw_input} = File.read("lib/%{day_dir}/input.txt")
+      {:ok, raw_input} = File.read("lib/solutions/%{day_dir}/input.txt")
       input = raw_input |> Utils.normalize_input()
   
       IO.puts("--- Part 1 ---")
@@ -59,15 +59,15 @@ defmodule Mix.Tasks.NewDay do
 
             IO.puts("Creating day #{day} directory...")
             day_dir = if day > 9, do: "day#{day}", else: "day0#{day}"
-            File.mkdir("lib/#{day_dir}")
+            File.mkdir("lib/solutions/#{day_dir}")
 
             IO.puts("Creating day #{day} input file...")
-            File.write("lib/#{day_dir}/input.txt", "")
+            File.write("lib/solutions/#{day_dir}/input.txt", "")
 
             IO.puts("Creating day #{day} solution file...")
 
             File.write(
-              "lib/#{day_dir}/solution.ex",
+              "lib/solutions/#{day_dir}/solution.ex",
               @code_template
               |> String.replace("%{day_cap}", String.capitalize(day_dir))
               |> String.replace("%{day_dir}", day_dir)

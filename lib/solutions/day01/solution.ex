@@ -29,7 +29,7 @@ defmodule Mix.Tasks.Day01 do
   use Mix.Task
 
   def run(_) do
-    {:ok, raw_input} = File.read("lib/day01/input.txt")
+    {:ok, raw_input} = File.read("lib/solutions/day01/input.txt")
     input = raw_input |> Utils.normalize_input()
 
     IO.puts("--- Part 1 ---")
