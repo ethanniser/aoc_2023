@@ -1,27 +1,12 @@
 defmodule Day01.Part1 do
   def solve(input) do
-    input
-    |> String.split("\n\n", trim: true)
-    |> Enum.map(&sum_lines/1)
-    |> Enum.max()
-  end
-
-  def sum_lines(sub_input) do
-    sub_input
-    |> String.split("\n", trim: true)
-    |> Enum.map(&String.to_integer/1)
-    |> Enum.sum()
+    0
   end
 end
 
 defmodule Day01.Part2 do
   def solve(input) do
-    input
-    |> String.split("\n\n", trim: true)
-    |> Enum.map(&Day01.Part1.sum_lines/1)
-    |> Enum.sort()
-    |> Enum.take(-3)
-    |> Enum.sum()
+    0
   end
 end
 
