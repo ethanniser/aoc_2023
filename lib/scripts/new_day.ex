@@ -4,13 +4,13 @@ defmodule Mix.Tasks.NewDay do
   @code_template """
   defmodule %{day_cap}.Part1 do
     def solve(input) do
-  
+      0
     end
   end
   
   defmodule %{day_cap}.Part2 do
     def solve(input) do
-  
+      0
     end
   end
   
@@ -37,7 +37,7 @@ defmodule Mix.Tasks.NewDay do
   
     @example_input \"\"\"
   
-    \"\"\"
+    \"\"\" |> Utils.normalize_input()
   
     test "solves example input for part 1" do
       assert %{day_cap}.Part1.solve(@example_input) == 0

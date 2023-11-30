@@ -2,21 +2,22 @@ defmodule Day01Test do
   use ExUnit.Case
 
   @example_input """
-  1000
-  2000
-  3000
+                 1000
+                 2000
+                 3000
 
-  4000
+                 4000
 
-  5000
-  6000
+                 5000
+                 6000
 
-  7000
-  8000
-  9000
+                 7000
+                 8000
+                 9000
 
-  10000
-  """
+                 10000
+                 """
+                 |> Utils.normalize_input()
 
   test "solves example input for part 1" do
     assert Day01.Part1.solve(@example_input) == 24000
