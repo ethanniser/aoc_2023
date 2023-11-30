@@ -1,9 +1,9 @@
-# Trying out Elixir with Advent of Code 2022
+# Trying out Elixir with Advent of Code 2023
 
 ## Generate files for each day
 
 ```bash
-mix new_day \<day\>
+mix new_day <day>
 ```
 
 ## Run examples
@@ -15,6 +15,6 @@ mix test
 ## Run solutions
 
 ```bash
-mix day\<day\>
+mix day<day>
 ```
 
