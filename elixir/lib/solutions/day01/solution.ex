@@ -31,107 +31,47 @@ defmodule Day01.Part2 do
 
   def parse_line(line) do
     first_digit = find_first_digit(line)
+    second_digit = find_first_digit(String.reverse(line))
 
-    second_digit = find_last_digit(String.reverse(line))
-
-    case second_digit do
-      nil -> {first_digit, first_digit}
-      _ -> {first_digit, second_digit}
-    end
+    {first_digit, second_digit}
   end
 
   def find_first_digit(str) do
     case find_first_digit_inner(str) do
-      {nil, rest} -> find_first_digit(rest)
-      {digit, _} -> digit
+      :no_match -> find_first_digit(String.slice(str, 1, String.length(str)))
+      digit -> digit
     end
   end
 
   def find_first_digit_inner(str) do
     case str do
-      "one" <> rest ->
-        {"1", rest}
+      "one" <> _ -> "1"
+      "two" <> _ -> "2"
+      "three" <> _ -> "3"
+      "four" <> _ -> "4"
+      "five" <> _ -> "5"
+      "six" <> _ -> "6"
+      "seven" <> _ -> "7"
+      "eight" <> _ -> "8"
+      "nine" <> _ -> "9"
 
-      "two" <> rest ->
-        {"2", rest}
-
-      "three" <> rest ->
-        {"3", rest}
-
-      "four" <> rest ->
-        {"4", rest}
-
-      "five" <> rest ->
-        {"5", rest}
-
-      "six" <> rest ->
-        {"6", rest}
-
-      "seven" <> rest ->
-        {"7", rest}
-
-      "eight" <> rest ->
-        {"8", rest}
-
-      "nine" <> rest ->
-        {"9", rest}
+      "eno" <> _ -> "1"
+      "owt" <> _ -> "2"
+      "eerht" <> _ -> "3"
+      "ruof" <> _ -> "4"
+      "evif" <> _ -> "5"
+      "xis" <> _ -> "6"
+      "neves" <> _ -> "7"
+      "thgie" <> _ -> "8"
+      "enin" <> _ -> "9"
 
       other ->
         first_char = String.slice(other, 0, 1)
-        rest = String.slice(other, 1, String.length(other))
 
         if String.match?(first_char, ~r/\d/) do
-          {first_char, rest}
+          first_char
         else
-          {nil, rest}
-        end
-    end
-  end
-
-  def find_last_digit(str) do
-    case find_last_digit_inner(str) do
-      {nil, rest} -> find_last_digit(rest)
-      {digit, _} -> digit
-    end
-  end
-
-  def find_last_digit_inner(str) do
-    case str do
-      "eno" <> rest ->
-        {"1", rest}
-
-      "owt" <> rest ->
-        {"2", rest}
-
-      "eerht" <> rest ->
-        {"3", rest}
-
-      "ruof" <> rest ->
-        {"4", rest}
-
-      "evif" <> rest ->
-        {"5", rest}
-
-      "xis" <> rest ->
-        {"6", rest}
-
-      "neves" <> rest ->
-        {"7", rest}
-
-      "thgie" <> rest ->
-        {"8", rest}
-
-      "enin" <> rest ->
-        {"9", rest}
-
-      other ->
-        first_char = String.slice(other, 0, 1)
-        rest = String.slice(other, 1, String.length(other))
-
-        if String.match?(first_char, ~r/\d/) do
-          {first_char, rest}
-        else
-          {nil, rest}
+          :no_match
         end
     end
   end
