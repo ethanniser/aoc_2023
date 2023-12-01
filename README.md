@@ -1,20 +1,3 @@
-# Trying out Elixir with Advent of Code 2023
+# Advent of Code 2023
 
-## Generate files for each day
-
-```bash
-mix new_day <day>
-```
-
-## Run examples
-
-```bash
-mix test
-```
-
-## Run solutions
-
-```bash
-mix day<day>
-```
-
+## Using to try out both Elixir and Ocaml, go to the subdirectory for each to checkout
