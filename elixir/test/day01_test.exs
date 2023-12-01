@@ -26,5 +26,9 @@ defmodule Day01Test do
 
   test "solves example input for part 2" do
     assert Day01.Part2.solve(@part2_example_input) == 281
+
+    test_case_two = "xjs2kofiveight"
+
+    assert Day01.Part2.solve(test_case_two) == 28
   end
 end
