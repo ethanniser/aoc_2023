@@ -1,3 +1,5 @@
+## ELIXIR ##
+
 # The directory Mix will write compiled artifacts to.
 /_build/
 
@@ -24,3 +26,12 @@ mix_test-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+## OCAML ##
+_build/
+_opam/
+inputs/
+.sl/
+.git/
+.DS_Store
+.envrc
