@@ -99,7 +99,7 @@ defmodule Day02.Part2 do
       end)
     end)
     |> Enum.map(fn game_map ->
-      game_map.blue * game_map.green * game_map.red
+      game_map |> Map.values() |> Enum.product()
     end)
     |> Enum.sum()
   end
