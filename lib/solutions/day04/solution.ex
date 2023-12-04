@@ -29,11 +29,6 @@ end
 
 defmodule Day04.Part2 do
   def solve(input) do
-    n_games =
-      input
-      |> String.split("\n")
-      |> Enum.count()
-
     matches =
       input
       |> String.split("\n")
@@ -54,8 +49,24 @@ defmodule Day04.Part2 do
         Enum.count(good_nums)
       end)
 
-    matches
-    |> IO.inspect()
+    won_copies =
+      matches
+      |> Enum.with_index()
+      |> Enum.map(fn
+        {0, _} -> :no_wins
+        {n, i} -> (i + 1)..(n + i) |> Enum.to_list()
+      end)
+
+    won_copies
+    |> Enum.map(&(count_cards(won_copies, &1) + 1))
+    |> Enum.sum()
+  end
+
+  def count_cards(_, :no_wins), do: 0
+
+  def count_cards(won_copies, copies) do
+    Enum.count(copies) +
+      Enum.sum(for copy <- copies, do: count_cards(won_copies, Enum.at(won_copies, copy)))
   end
 end
 
