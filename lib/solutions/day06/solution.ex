@@ -35,12 +35,31 @@ defmodule Day06.Part2 do
     end)
     |> Enum.map(fn x -> String.to_integer(x) end)
     |> then(fn [time, distance] ->
-      1..time
-      |> Enum.map(fn x ->
-        (time - x) * x
-      end)
-      |> Enum.filter(fn x -> x > distance end)
-      |> Enum.count()
+      center = div(time, 2)
+
+      start =
+        Enum.reduce_while(center..1, 0, fn x, acc ->
+          result = (time - x) * x
+
+          if result > distance do
+            {:cont, acc + 1}
+          else
+            {:halt, acc}
+          end
+        end)
+
+      finish =
+        Enum.reduce_while((center + 1)..time, 0, fn x, acc ->
+          result = (time - x) * x
+
+          if result > distance do
+            {:cont, acc + 1}
+          else
+            {:halt, acc}
+          end
+        end)
+
+      start + finish
     end)
   end
 end
